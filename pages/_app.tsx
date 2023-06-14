@@ -1,17 +1,18 @@
-import type { AppProps } from "next/app";
-import { ThirdwebProvider } from "@thirdweb-dev/react";
 import "../styles/globals.css";
-
-// This is the chain your dApp will work on.
-// Change this to the chain your app is built for.
-// You can also import additional chains from `@thirdweb-dev/chains` and pass them directly.
-const activeChain = "ethereum";
+import type { AppProps } from "next/app";
+import { useState } from "react";
+import ChainContext from "../context/Chain";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [selectedChain, setSelectedChain] = useState("ethereum");
+
   return (
-    <ThirdwebProvider activeChain={activeChain}>
-      <Component {...pageProps} />
-    </ThirdwebProvider>
+    <ChainContext.Provider value={{ selectedChain, setSelectedChain }}>
+      <ThirdwebProvider activeChain={selectedChain}>
+        <Component {...pageProps} />
+      </ThirdwebProvider>
+    </ChainContext.Provider>
   );
 }
 
