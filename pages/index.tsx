@@ -18,11 +18,11 @@ export default function Buy() {
 
   const { contract } = useContract(contractAddress);
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(200); // Updated to load 200 NFTs
+  const [end, setEnd] = useState(500); // Updated to load 500 NFTs
 
   const loadMore = () => {
     setStart(end);
-    setEnd(end + 200); // Updated to load 200 more NFTs
+    setEnd(end + 500); // Updated to load 500 more NFTs
   };
 
   const supply = loadSupply(contract);
@@ -77,7 +77,7 @@ export default function Buy() {
       {supply && end < supply && (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button onClick={loadMore}>
-            Load 200 more
+            Load 500 more
           </button>
         </div>
       )}
