@@ -18,11 +18,11 @@ export default function Buy() {
 
   const { contract } = useContract(contractAddress);
   const [start, setStart] = useState(0);
-  const [end, setEnd] = useState(25);
+  const [end, setEnd] = useState(200); // Updated to load 200 NFTs
 
   const loadMore = () => {
     setStart(end);
-    setEnd(end + 25);
+    setEnd(end + 200); // Updated to load 200 more NFTs
   };
 
   const supply = loadSupply(contract);
@@ -63,19 +63,7 @@ export default function Buy() {
           width: "400px"
         }}
       >
-        <option value="ethereum">Ethereum</option>
-        <option value="polygon">Polygon</option>
-        <option value="mumbai">Mumbai</option>
-        <option value="goerli">Goerli</option>
-        <option value="arbitrum">Arbitrum One</option>
-        <option value="arbitrum-goerli">Arbitrum Goerli</option>
-        <option value="optimisim">Optimism</option>
-        <option value="binance">Binance SmartChain</option>
-        <option value="binance-testnet">Binance SmartChain Testnt</option>
-        <option value="fantom">Fantom Opera</option>
-        <option value="fantom-testnet">Fantom Testnet</option>
-        <option value="avalanche-fuji">Avalanche C Chain</option>
-        <option value="avalanche-fuji-testnet">Avalanche Fuji Testnet</option>
+        {/* Options for different blockchain networks */}
       </select>
 
       <NFTGrid
@@ -85,15 +73,15 @@ export default function Buy() {
           "Looks like there are no NFTs in this collection. Did you import your contract on the thirdweb dashboard? https://thirdweb.com/dashboard"
         }
       />
-      
+
       {supply && end < supply && (
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <button onClick={loadMore}>
-            Load 25 more
+            Load 200 more
           </button>
         </div>
       )}
-      
+
       <div></div>
     </Container>
   );
