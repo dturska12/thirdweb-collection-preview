@@ -65,6 +65,7 @@ export default function Buy() {
       >
         <option value="ethereum">Ethereum</option>
         <option value="polygon">Polygon</option>
+        <option value="mumbai">Mumbai</option>
         <option value="goerli">Goerli</option>
         <option value="arbitrum">Arbitrum One</option>
         <option value="arbitrum-goerli">Arbitrum Goerli</option>
